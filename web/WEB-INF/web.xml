@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <!--  -->
     <servlet>
         <!--名稱 -->
         <servlet-name>springmvc</servlet-name>
@@ -19,11 +20,27 @@
     </servlet>
 
     <!--所有請求都會被springmvc攔截 -->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>springmvc</servlet-name>-->
+        <!--<url-pattern>/Hello/Hi</url-pattern>-->
+    <!--</servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-
+    <!-- 配置編碼方式篩檢程式,注意一點:要配置在所有篩檢程式的前面 -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </web-app>
