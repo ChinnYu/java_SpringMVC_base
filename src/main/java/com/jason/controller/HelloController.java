@@ -16,6 +16,7 @@ public class HelloController {
 
     @RequestMapping("/Hi")
     public String Hi(Model model){
+        model.addAttribute("msg","Hello SpringMVC!");
         return "hi";
     }
 }

@@ -14,5 +14,9 @@
 </head>
 <body>
 <h1 style="color: red">${msg}</h1>
+<img src="<c:url value="/image/8.jpg"></c:url>">
+<p>
+    <c:url value="/image/8.jpg"></c:url>
+</p>
 </body>
 </html>

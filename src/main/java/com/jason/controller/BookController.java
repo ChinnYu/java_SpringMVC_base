@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Arrays;
 import java.util.List;
@@ -64,6 +65,22 @@ public class BookController {
     @RequestMapping("/list8")
     public String list8(Model model,@RequestParam("hobby") List<String> hobbies){
         model.addAttribute("msg","book list action!dd8, "+Arrays.deepToString(hobbies.toArray()));
+        return "book/list";
+    }
+
+    @RequestMapping("/list9")
+    public String list9(Model model, RedirectAttributes attributes){
+        model.addAttribute("msg","book list action!dd9, ");
+        Book book = new Book();
+        book.setName("MKK");
+        book.setPrice(55);
+        attributes.addFlashAttribute("book",book);
+        return "redirect:list10";
+    }
+
+    @RequestMapping("/list10")
+    public String list10(Model model,Book book){
+        model.addAttribute("msg","book list action!dd10, "+book);
         return "book/list";
     }
 
